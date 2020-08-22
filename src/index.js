@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import HomepageLayout from './HomepageLayout';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <HomepageLayout />
   </React.StrictMode>,
   document.getElementById('root')
 );
