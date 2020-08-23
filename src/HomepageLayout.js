@@ -2,6 +2,7 @@ import 'semantic-ui-css/semantic.min.css'
 import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import {
+  Image,
   Container,
   Header,
   Segment,
@@ -23,7 +24,8 @@ const getBreezeURL = (lat, lng, key) => {
  * components for such things.
  */
 export const HomepageHeading = ({ setZip }) => (
-  <Container text>
+  <Container 
+  text>
     <Header
       as='h1'
       content='SnifflZ'
@@ -61,7 +63,11 @@ const DesktopContainer = ({ setZip }) => {
           <Segment
             inverted
             textAlign='center'
-            style={{  padding: '1em 0em' }}
+            style={{  
+              padding: '1em 0em',
+              backgroundImage: `url(${"https://i.imgur.com/Ysfo7fk.jpg"})`,
+            
+          }}
             vertical
             
           >
