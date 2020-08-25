@@ -66,7 +66,6 @@ const DesktopContainer = ({ setZip }) => {
             style={{  
               padding: '1em 0em',
               backgroundImage: `url(${"https://i.imgur.com/Ysfo7fk.jpg"})`,
-            
           }}
             vertical
             
@@ -93,8 +92,8 @@ const HomepageLayout = () => {
     lng:0,
   })
   const [ pollen, setPollen ] = useState({})
-  const [ fireScore, setFireScore ] = useState( null )
-  const [ airscore, airScore ] = useState( null )
+  // const [ fireScore, setFireScore ] = useState( null )
+  // const [ airscore, airScore ] = useState( null )
   
 
   useEffect(()=>{
