@@ -1,11 +1,12 @@
 import React from 'react'
+import DisplayCard from './DisplayCard'
 
 const Results = ({ pollenData }) => {
 
   return (
   <div>
     <h1>
-      fuckfuckfuckfuckfuck
+      <DisplayCard/>
     </h1>
   </div>
   )
