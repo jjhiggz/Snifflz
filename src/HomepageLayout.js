@@ -22,6 +22,9 @@ const getBreezeURL = (lat, lng, key) => {
  */
 export const HomepageHeading = ({ setZip }) => (
   <Container text>
+    <Header as="h2" inverted>
+      Today is...
+    </Header>
     <Header
       as="h1"
       content="SnifflZ"
@@ -30,7 +33,7 @@ export const HomepageHeading = ({ setZip }) => (
         fontSize: "4em",
         fontWeight: "normal",
         marginBottom: 0,
-        marginTop: "3em",
+        marginTop: "2em",
       }}
     />
     <Header
@@ -43,7 +46,9 @@ export const HomepageHeading = ({ setZip }) => (
         marginTop: "1.5em",
       }}
     />
-    <ZipForm setZip={setZip} />
+    <Container style={{ marginTop: "2em", marginBottom: "2em" }}>
+      <ZipForm centered setZip={setZip} />
+    </Container>
   </Container>
 );
 
@@ -51,7 +56,7 @@ export const HomepageHeading = ({ setZip }) => (
  * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
  * It can be more complicated, but you can create really flexible markup.
  */
-const DesktopContainer = ({ setZip, pollen }) => {
+const DesktopContainer = ({ setZip }) => {
   return (
     <Segment
       inverted
@@ -62,7 +67,6 @@ const DesktopContainer = ({ setZip, pollen }) => {
       }}
       vertical
     >
-      <Header>{pollen.day}</Header>
       <HomepageHeading
         setZip={setZip}
         style={{
@@ -139,7 +143,7 @@ const HomepageLayout = () => {
 
   return (
     <>
-      <DesktopContainer setZip={setZip} pollen={pollen} />
+      <DesktopContainer setZip={setZip} />
       <Results pollenData={pollen} />
     </>
   );

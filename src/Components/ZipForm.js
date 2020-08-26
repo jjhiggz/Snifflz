@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import React, { Component } from "react";
+import { Form } from "semantic-ui-react";
 export class ZipForm extends Component {
-  state = { zip: '' };
+  state = { zip: "" };
 
   handleChange = (e, { name, value }) => {
-    if(
-      value.length <= 5
-    ){
-      console.log('hit')
-      this.setState({ [ name ]: value });
+    if (value.length <= 5) {
+      console.log("hit");
+      this.setState({ [name]: value });
     }
   };
 
   handleSubmit = () => {
-    console.log('submitting zipcode');
+    console.log("submitting zipcode");
     this.props.setZip(this.state.zip);
   };
 
@@ -22,22 +20,34 @@ export class ZipForm extends Component {
     const { handleSubmit } = this;
 
     return (
-      <div>
-        <Form
-          onSubmit={handleSubmit}
-        >
-          <Form.Group>
+      <>
+        <Form size="huge" onSubmit={handleSubmit}>
+          <Form.Group
+            style={{
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Form.Input
               placeholder="Enter Your Zipcode"
               name="zip"
               type="number"
               value={zip}
-              onChange={this.handleChange} />
+              onChange={this.handleChange}
+            />
             <Form.Button
-              content="Submit" />
+              fluid
+              size="huge"
+              content="Submit"
+              style={{
+                marginTop: "1.5em",
+              }}
+            />
           </Form.Group>
         </Form>
-      </div>
+      </>
     );
   }
 }
