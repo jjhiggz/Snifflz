@@ -47,7 +47,7 @@ export const HomepageHeading = ({ setZip }) => (
       }}
     />
     <Container style={{ marginTop: "2em", marginBottom: "2em" }}>
-      <ZipForm centered setZip={setZip} />
+      <ZipForm setZip={setZip} />
     </Container>
   </Container>
 );
