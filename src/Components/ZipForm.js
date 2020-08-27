@@ -38,6 +38,7 @@ export class ZipForm extends Component {
               onChange={this.handleChange}
             />
             <Form.Button
+              inverted
               fluid
               size="huge"
               content="Submit"

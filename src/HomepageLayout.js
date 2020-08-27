@@ -1,9 +1,11 @@
-import "semantic-ui-css/semantic.min.css";
-import PropTypes from "prop-types";
+import { Container, Header, Segment } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
-import { Image, Container, Header, Segment } from "semantic-ui-react";
 import { ZipForm } from "./Components/ZipForm";
 import Results from "./Components/Results";
+import PageFooter from "./Components/PageFooter";
+import "semantic-ui-css/semantic.min.css";
+import PropTypes from "prop-types";
+import "./HomepageLayout.css";
 
 const BREEZE_O_METER_API_KEY = "aa2ca4cd977844dba365b5d0434ec9e6";
 const GOOGLE_MAPS_API_KEY = "AIzaSyD3At_jejDYID03nsPV38JNuj_JClsSf58";
@@ -22,10 +24,8 @@ const getBreezeURL = (lat, lng, key) => {
  */
 export const HomepageHeading = ({ setZip }) => (
   <Container text>
-    <Header as="h2" inverted>
-      Today is...
-    </Header>
     <Header
+      className="snifflzTitle"
       as="h1"
       content="SnifflZ"
       inverted
@@ -43,7 +43,7 @@ export const HomepageHeading = ({ setZip }) => (
       style={{
         fontSize: "1.7em",
         fontWeight: "normal",
-        marginTop: "1.5em",
+        marginBottom: "1.5em",
       }}
     />
     <Container style={{ marginTop: "2em", marginBottom: "2em" }}>
@@ -63,10 +63,15 @@ const DesktopContainer = ({ setZip }) => {
       textAlign="center"
       style={{
         padding: "1em 0em",
-        backgroundImage: `url(${"https://i.imgur.com/Ysfo7fk.jpg"})`,
+        backgroundImage: `url(${"https://images.unsplash.com/photo-1574193087288-ab6c6ef2933c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80"})`,
+        backgroundSize: "cover",
       }}
       vertical
     >
+      {" "}
+      <Header as="h2" textAlign="left" inverted style={{ paddingLeft: 20 }}>
+        Today is...
+      </Header>
       <HomepageHeading
         setZip={setZip}
         style={{
@@ -98,6 +103,7 @@ const HomepageLayout = () => {
   // const [ airscore, airScore ] = useState( null )
 
   useEffect(() => {
+    document.title = "Snifflz.";
     // https://maps.googleapis.com/maps/api/geocode/outputFormat?parameters
     const MAPS_URL = ZIP_ENDPOINT + zip;
 
@@ -122,12 +128,12 @@ const HomepageLayout = () => {
     fetch(URL)
       .then((response) => response.json())
       .then((result) => {
-        //! results contains Day and Pollen Types info
+        //* * results contains Day and Pollen Types info
         const results = result.data[0];
-        //! the date is important to have, but we need to track pollen types!!
+        //* * the date is important to have, but we need to track pollen types!!
         const pollenTypes = results.types;
         let { grass, tree, weed } = results.types;
-        //! tracks pollen level (high, low, medium)
+        //* * tracks pollen level (high, low, medium)
         grass.level = Object.entries(grass.index)[1][1];
         tree.level = Object.entries(tree.index)[1][1];
         weed.level = Object.entries(weed.index)[1][1];
@@ -145,6 +151,7 @@ const HomepageLayout = () => {
     <>
       <DesktopContainer setZip={setZip} />
       <Results pollenData={pollen} />
+      <PageFooter />
     </>
   );
 };
